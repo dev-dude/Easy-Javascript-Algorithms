@@ -6,7 +6,7 @@
     };
 
     function Bst () {
-        this.root;
+        this.root = null;
         this.insert = function(value, node) {
             if (!this.root) {
                 this.root = new Node(value,null,null);
@@ -26,7 +26,7 @@
                     this.insert(value, currentNode.right);
                 }
             }
-        }
+        };
         this.inorderTraversal = function(node) {
             if(node.left !== null) {
                 this.inorderTraversal(node.left)
@@ -35,7 +35,7 @@
             if(node.right !== null) {
                 this.inorderTraversal(node.right)
             }
-        }
+        };
         this.preOrderTraversal = function(node) {
             console.log(node.value);
             if(node.left !== null) {
@@ -44,7 +44,7 @@
             if(node.right !== null) {
                 this.inorderTraversal(node.right)
             }
-        }
+        };
         this.postOrderTraversal = function(node) {
             if(node.left !== null) {
                 this.inorderTraversal(node.left)
@@ -54,12 +54,12 @@
             }
             console.log(node.value);
         }
-    };
+    }
     bst = new Bst();
     bst.insert(51);bst.insert(21);bst.insert(72);bst.insert(15);bst.insert(31);bst.insert(84);bst.insert(69);
     bst.inorderTraversal();
     bst.preOrderTraversal();
-    bst.postOrderTraversal
+    bst.postOrderTraversal();
 </script>
 <html>
 </html>
