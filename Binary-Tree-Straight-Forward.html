@@ -68,16 +68,45 @@
                 console.log('NOT Found!');
                 return false;
             }
+        };
+        this.breadthFirstSearch = function(node) {
+            var queue = [node],
+                result = [],
+                currentCount = 1,
+                nextCount = 0,
+                levelCount = 0;
+            while (queue.length) {
+                node = queue.shift();
+                currentCount--;
+                console.log(node);
+                result.push(node.value);
+                if (node.left) {
+                    queue.push(node.left);
+                    nextCount++;
+                }
+                if (node.right) {
+                    queue.push(node.right);
+                    nextCount++;
+                }
+                if (currentCount === 0) {
+                    currentCount = nextCount;
+                    console.log("---- Level ----" + levelCount++);
+                    nextCount = 0;
+
+                }
+            }
+            return result;
         }
     }
 
     bst = new Bst();
     bst.insert(51);bst.insert(21);bst.insert(72);bst.insert(15);bst.insert(31);bst.insert(84);bst.insert(69);
-    bst.inorderTraversal(bst.root);
+    console.log(bst.inorderTraversal(bst.root));
     bst.preOrderTraversal(bst.root);
     bst.postOrderTraversal(bst.root);
     bst.depthFirstSearch(84);
     bst.depthFirstSearch(85);
+    bst.breadthFirstSearch(bst.root);
 </script>
 <html>
 </html>
