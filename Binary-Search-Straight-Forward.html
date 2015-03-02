@@ -1,0 +1,22 @@
+<script>
+    function binarySearch (searchValue, searchArray) {
+        var lowIndex = 0,
+            highIndex = searchArray.length - 1,
+            midPointInArray;
+            while (lowIndex <= highIndex) {
+                midPointInArray = Math.floor((lowIndex + highIndex) / 2);
+                if (searchValue > searchArray[midPointInArray]) {
+                    lowIndex = midPointInArray + 1;
+                } else if (searchValue < searchArray[midPointInArray]) {
+                    highIndex = midPointInArray + 1;
+                } else {
+                    return midPointInArray;
+                }
+            }
+            // Not Found
+            return -1;
+    }
+    console.log(binarySearch(3, [1,2,3,4,5,6,7,8,9]));
+</script>
+<html>
+</html>
