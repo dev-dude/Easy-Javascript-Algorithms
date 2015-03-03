@@ -63,18 +63,18 @@
           return found
       };
 
-      // WIP
       this.insertAfter = function(value, afterValue) {
           var found = false,
-          currentNode = this.start,
-          previous = this.start;
+          currentNode = this.start;
 
           while (!found && currentNode !== null) {
                 if (currentNode.value === afterValue) {
-                     var newNode = new Node(value,null),
-                        next = currentNode.next;
+                     var next = currentNode.next,
+                        newNode = new Node(value,next);
                      currentNode.next = newNode;
-                     newNode.next = next;
+                     if (!next) {
+                         this.end = newNode;
+                     }
                      found = true;
                      return found;
                 } else if (currentNode.next !== null) {
