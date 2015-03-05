@@ -1,0 +1,62 @@
+<script>
+    // FROM HERE - FOR PERSONAL USE
+    // https://github.com/mgechev/javascript-algorithms/blob/master/src/graphs/searching/dfs.js
+    // http://www.stoimen.com/blog/2012/09/17/computer-algorithms-graph-depth-first-search/
+
+    var graph =[
+            [0, 1, 1, 0, 0, 0],
+            [1, 0, 0, 1, 0, 0],
+            [1, 0, 0, 1, 0, 0],
+            [0, 1, 1, 0, 1, 0],
+            [0, 0, 0, 1, 0, 1],
+            [0, 0, 0, 0, 1, 0]
+    ];
+
+    function dfs(graph, current) {
+        var stack = [];
+        var visited = [];
+        var node;
+        stack.push(current);
+        visited[current] = true;
+        while (stack.length) {
+            node = stack.pop();
+            console.log(node);
+            for (var i = 0; i < graph[node].length; i += 1) {
+                if (graph[node][i] && !visited[i]) {
+                    stack.push(i);
+                    visited[i] = true;
+                }
+            }
+        }
+        return false;
+    }
+
+    function bfs (graph, startNode) {
+        var parents = [];
+        var queue = [];
+        var visited = [];
+        var current;
+        queue.push(startNode);
+        parents[startNode] = null;
+        visited[startNode] = true;
+        console.log(startNode);
+        console.log('---');
+        while (queue.length) {
+            current = queue.shift();
+            for (var i = 0; i < graph.length; i += 1) {
+                if (i !== current && graph[current][i] && !visited[i]) {
+                    parents[i] = current;
+                    visited[i] = true;
+                    queue.push(i);
+                    console.log(i);
+                }
+            }
+            console.log('---');
+        }
+        return null;
+    }
+    bfs (graph, 2);
+    dfs (graph, 2);
+</script>
+<html>
+</html>
