@@ -2,7 +2,25 @@
     // FROM HERE - FOR PERSONAL USE
     // https://github.com/mgechev/javascript-algorithms/blob/master/src/graphs/searching/dfs.js
     // http://www.stoimen.com/blog/2012/09/17/computer-algorithms-graph-depth-first-search/
-    // http://www.stoimen.com/blog/2012/08/31/computer-algorithms-graphs-and-their-representation/
+    // http://www.stoimen.com/blog/2012/08/31/computer-algorithms-graphs-and-their-representation
+   // https://github.com/oreillymedia/data_structures_and_algorithms_using_javascript
+
+    function Graph() {
+
+        var vertices = []; //list
+
+        var adjList = new Dictionary();
+
+        this.addVertex = function(v){
+            vertices.push(v);
+            adjList.set(v, []); //initialize adjacency list with array as well;
+        };
+
+        this.addEdge = function(v, w){
+            adjList.get(v).push(w);
+            //adjList.get(w).push(v); //commented to run the improved DFS with topological sorting
+        };
+    }
 
     var graph =[
             [0, 1, 1, 0, 0, 0],
@@ -77,6 +95,37 @@
     }
     bfs (graph, 2);
     dfs (graph, 2);
+
+
+
+    function Graph(directed) {
+        this.directed = !!directed;
+        this.vertices = {};
+        this.edges = {};
+
+
+        this.addVertex = function(vertex) {
+            if (!this.vertices[vertex.id]) {
+                this.vertices[vertex.id] = vertex;
+            }
+        };
+
+        // Adjacency map representation
+        this.addEdge = function(vertex1, vertex2, weight) {
+            if (!this.edges[vertex1.id]) {
+                this.edges[vertex1.id] = {};
+            }
+            this.edges[vertex1.id][vertex2.id] = weight;
+            if (!this.directed) {
+                if (!this.edges[vertex2.id]) {
+                    this.edges[vertex2.id] = {};
+                }
+                this.edges[vertex2.id][vertex1.id] = weight;
+            }
+        };
+
+    }
+
 </script>
 <html>
 </html>
