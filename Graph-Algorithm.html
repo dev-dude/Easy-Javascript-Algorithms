@@ -103,7 +103,6 @@
         this.vertices = {};
         this.edges = {};
 
-
         this.addVertex = function(vertex) {
             if (!this.vertices[vertex.id]) {
                 this.vertices[vertex.id] = vertex;
@@ -111,19 +110,16 @@
         };
 
         // Adjacency map representation
-        this.addEdge = function(vertex1, vertex2, weight) {
+        this.addEdge = function(vertex1, vertex2) {
             if (!this.edges[vertex1.id]) {
                 this.edges[vertex1.id] = {};
             }
-            this.edges[vertex1.id][vertex2.id] = weight;
             if (!this.directed) {
                 if (!this.edges[vertex2.id]) {
                     this.edges[vertex2.id] = {};
                 }
-                this.edges[vertex2.id][vertex1.id] = weight;
             }
         };
-
     }
 
 </script>
