@@ -13,7 +13,7 @@
             [0, 0, 0, 0, 1, 0]
     ];
 
-    function dfs(graph, start, goal) {
+    function dfs(graph, start, targetNode) {
         var stack = [],
             visited = [],
             node;
@@ -22,7 +22,7 @@
         while (stack.length) {
             node = stack.pop();
             console.log(node);
-            if (node === goal) {
+            if (node === targetNode) {
                 return true;
             }
             for (var i = 0; i < graph[node].length; i ++) {
@@ -48,24 +48,28 @@
         var parents = [];
         var queue = [];
         var visited = [];
-        var current;
+        var node;
         queue.push(startNode);
         parents[startNode] = null;
         visited[startNode] = true;
         console.log(startNode);
         console.log('---');
         while (queue.length) {
-            current = queue.shift();
-            if (current === targetNode) {
+            node = queue.shift();
+            if (node === targetNode) {
                 return buildPath(parents, targetNode);
             }
-            for (var i = 0; i < graph.length; i += 1) {
-                if (i !== current && graph[current][i] && !visited[i]) {
-                    parents[i] = current;
+            for (var i = 0; i < graph.length; i ++) {
+                if (i !== node && graph[node][i] && !visited[i]) {
+                    parents[i] = node;
                     visited[i] = true;
                     queue.push(i);
                     console.log(i);
                 }
+
+
+
+
             }
             console.log('---');
         }
