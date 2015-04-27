@@ -34,11 +34,11 @@
         return merge(subLeft, subRight);
     }
 
-    function merge (a,b) {
+    function merge (arr1,arr2) {
         var result = [];
-        while (a.length >0 && b.length >0)
-            result.push(a[0] < b[0]? a.shift() : b.shift());
-        return result.concat(a.length? a : b);
+        while (arr1.length >0 && arr2.length >0)
+            result.push(arr1[0] < arr2[0]? arr1.shift() : arr2.shift());
+        return result.concat(arr1.length? arr1 : arr2);
     }
 
     var test = [1,2,9,3,2,5,14,0];

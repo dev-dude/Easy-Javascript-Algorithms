@@ -1,3 +1,5 @@
+// FOR PERSONAL NON COMMERCIAL USE Some Code From: https://github.com/fulltilt/JSAlgs/blob/de414068dd612185530b0855802e1586169e96c7/BinarySearchTree.js
+
 <script>
     var Node = function(value, left, right) {
         this.value = value;
@@ -96,7 +98,114 @@
                 }
             }
             return result;
+        };
+
+        this.maxDepth = function(root) {
+            if (!root) {
+                return 0;
+            }
+            return 1 + Math.max(this.maxDepth(root.left), this.maxDepth(root.right));
+        };
+
+        this.minDepth = function(root) {
+            if (!root) {
+                return 0;
+            }
+            return 1 + Math.min(this.minDepth(root.left), this.maxDepth(root.right));
+        };
+
+        this.isBalanced = function() {
+            return (this.minDepth(this.root) - this.maxDepth(this.root) <= 1);
         }
+
+
+        /*
+         function getSuccessor(root, node) {
+             // 1st case
+             if (node.right !== null) {
+             var current = node.right;
+             while (current.left !== null) {
+                current = current.left;
+             }
+                return current;
+             }
+
+             // 2nd case
+             var successor = null;
+                 while (root !== null) {
+                    if (node.data < root.data) {
+                    successor = root;
+                    root = root.left;
+                 } else if (node.data > root.data) {
+                     root = root.right;
+                 } else {  // if we get here, that means we reached 'node'
+                    break;
+                 }
+             }
+
+                return successor;
+             }
+
+             function minNode(node){
+                 if(!node){
+                    return 0;
+                 }
+                 if(node.left){
+                    return minNode(node.left)
+                 }
+                 return node.value
+             }
+
+             function maxNode(node){
+                 if(!node){
+                    return 0;
+                 }
+                 if(node.right){
+                    return maxNode(node.right)
+                 }
+                return node.value;
+             }
+
+         function printAllPaths(node,path) {
+             if (!node) {
+                return null;
+             }
+             path.push(node.value);
+             if (node.left) {
+                this.printAllPaths(node.left,path)
+             }
+             if (node.right) {
+                 this.printAllPaths(node.right,path)
+             }
+
+             if (!node.left && !node.right) {
+                console.log(path);
+             }
+            path.pop(); // this part ensures that parts of other paths don't get added
+         }
+
+
+         function printAncestors(node, target, result) {
+            if(!node) {
+                return false;
+             }
+
+             if (node === target) {
+                return true;
+             }
+
+             if (this.printAncestors(node.left, target, result) || this.printAncestors(node.right, target, result)) {
+                result.push(node.data);
+                return true;
+             }
+             return false;
+         }
+
+         */
+
+
+
+
     }
 
     bst = new Bst();
@@ -107,6 +216,7 @@
     bst.depthFirstSearch(84);
     bst.depthFirstSearch(85);
     bst.breadthFirstSearch(bst.root);
+    console.log(bst.isBalanced());
 </script>
 <html>
 </html>
