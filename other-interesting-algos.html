@@ -59,7 +59,21 @@
             }
         };
 
+        function Hanoi(n, from, to , via) {
+            if (n==0) return;
+            Hanoi(n-1, from, via , to);
+            moveDisk(from,to);
+            Hanoi(n-1, via, to , from);
+        }
+        /*
+        The input to the algorithm are 4 integer parameters, as follows:
 
+                n: number of disks; serves as the problem size for recursion
+                from: the "from" tower is where the disks are placed
+        to: the "to" tower is where the disks must be finally placed
+        via: the "via" tower is that used as an intermediate location as disks are moved between the towers from and to.
+                Normally (if we denote the towers with 0,1,2), the initial call for n disks will be Hanoi(n,0,2,1).
+        */
 
 
     </script>
